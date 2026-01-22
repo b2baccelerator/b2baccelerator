@@ -166,12 +166,14 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
-            padding: 12px 0;
+            height: 70px;
+            display: flex;
+            align-items: center;
         }
 
         @media (min-width: 768px) {
             .header {
-                padding: 16px 0;
+                height: 80px;
             }
         }
 
@@ -179,6 +181,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 100%;
         }
 
         .logo {
@@ -186,6 +189,7 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
+            height: 100%;
         }
 
         @media (min-width: 768px) {
@@ -218,16 +222,16 @@
         }
 
         .logo-img {
-            height: 48px;
+            height: 58px;
             width: auto;
-            max-width: 200px;
+            max-width: 220px;
             object-fit: contain;
         }
 
         @media (min-width: 768px) {
             .logo-img {
-                height: 56px;
-                max-width: 240px;
+                height: 68px;
+                max-width: 280px;
             }
         }
 
@@ -246,6 +250,8 @@
 
         .header-cta {
             display: none;
+            padding: 12px 24px;
+            font-size: 14px;
         }
 
         @media (min-width: 768px) {
@@ -503,12 +509,13 @@
             }
         }
 
-        /* Trust Bar */
+        /* Trust Bar - Auto Scrolling Slider */
         .trust-bar {
             padding: 32px 0;
             background: var(--primary-white);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
         }
 
         @media (min-width: 768px) {
@@ -521,7 +528,7 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 11px;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 500;
@@ -531,51 +538,54 @@
             .trust-text {
                 font-size: 13px;
                 letter-spacing: 2px;
-                margin-bottom: 24px;
+                margin-bottom: 32px;
             }
         }
 
-        .trust-logos {
+        .logo-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .logo-slider-track {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px 20px;
+            gap: 48px;
+            animation: scroll 30s linear infinite;
+            width: max-content;
         }
 
         @media (min-width: 768px) {
-            .trust-logos {
-                gap: 32px;
+            .logo-slider-track {
+                gap: 64px;
             }
         }
 
-        .trust-logo {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--text-subtle);
-            white-space: nowrap;
-            transition: color 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            .trust-logo {
-                font-size: 15px;
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
             }
         }
 
-        .trust-logo:hover {
-            color: var(--text-secondary);
+        .logo-slider:hover .logo-slider-track {
+            animation-play-state: paused;
         }
 
         .trust-logo-img {
-            height: 50px;
+            height: 70px;
             width: auto;
-            max-width: 160px;
+            min-width: 120px;
+            max-width: 200px;
             object-fit: contain;
             filter: grayscale(100%);
             opacity: 0.7;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .trust-logo-img:hover {
@@ -585,15 +595,17 @@
 
         @media (min-width: 768px) {
             .trust-logo-img {
-                height: 60px;
-                max-width: 180px;
+                height: 85px;
+                min-width: 150px;
+                max-width: 240px;
             }
         }
 
         @media (min-width: 1024px) {
             .trust-logo-img {
-                height: 70px;
-                max-width: 200px;
+                height: 100px;
+                min-width: 180px;
+                max-width: 280px;
             }
         }
 
@@ -1029,12 +1041,6 @@
             }
         }
 
-        @media (min-width: 1024px) {
-            .offer-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
         .offer-card {
             background: var(--card-white);
             border: 1px solid var(--border-color);
@@ -1165,7 +1171,7 @@
             flex-shrink: 0;
         }
 
-        /* Testimonials Section */
+        /* Testimonials Section - Integrated */
         .testimonials-section {
             padding: 60px 0;
             background: var(--primary-white);
@@ -1179,13 +1185,13 @@
 
         .testimonials-grid {
             display: grid;
-            gap: 16px;
+            gap: 24px;
         }
 
         @media (min-width: 768px) {
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                gap: 32px;
             }
         }
 
@@ -1198,25 +1204,48 @@
         .testimonial-card {
             background: var(--card-white);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
+            border-radius: 16px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-sm);
         }
 
-        @media (min-width: 768px) {
-            .testimonial-card {
-                border-radius: 16px;
-                padding: 32px;
-            }
-        }
-
         .testimonial-card:hover {
             border-color: var(--accent-blue-light);
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+
+        .testimonial-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .testimonial-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-content {
+                padding: 28px;
+            }
         }
 
         .testimonial-rating {
@@ -1337,96 +1366,6 @@
             .author-info span {
                 font-size: 13px;
             }
-        }
-
-        /* Video Testimonials Section */
-        .video-testimonials-section {
-            padding: 60px 0;
-            background: var(--bg-light);
-        }
-
-        @media (min-width: 768px) {
-            .video-testimonials-section {
-                padding: 100px 0;
-            }
-        }
-
-        .video-grid {
-            display: grid;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .video-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .video-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .video-card {
-            background: var(--card-white);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .video-card:hover {
-            border-color: var(--accent-blue-light);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-info {
-            padding: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .video-info {
-                padding: 24px;
-            }
-        }
-
-        .video-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-        }
-
-        @media (min-width: 768px) {
-            .video-title {
-                font-size: 18px;
-            }
-        }
-
-        .video-subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
         }
 
         /* Process Section */
@@ -1974,11 +1913,26 @@
         </div>
     </section>
 
-    <!-- Trust Bar -->
+    <!-- Trust Bar - Auto Scrolling Slider -->
     <section class="trust-bar">
         <div class="container">
             <p class="trust-text">Vertrauen von führenden B2B-Unternehmen</p>
-            <div class="trust-logos">
+        </div>
+        <div class="logo-slider">
+            <div class="logo-slider-track">
+                <img src="partner1.png" alt="Partner" class="trust-logo-img">
+                <img src="partner2.svg" alt="Partner" class="trust-logo-img">
+                <img src="partner3.png" alt="Partner" class="trust-logo-img">
+                <img src="partner4.png" alt="Partner" class="trust-logo-img">
+                <img src="partner5.svg" alt="Partner" class="trust-logo-img">
+                <img src="partner6.png" alt="Partner" class="trust-logo-img">
+                <img src="partner7.png" alt="Partner" class="trust-logo-img">
+                <img src="partner8.png" alt="Partner" class="trust-logo-img">
+                <img src="partner9.png" alt="Partner" class="trust-logo-img">
+                <img src="partner10.png" alt="Partner" class="trust-logo-img">
+                <img src="partner11.png" alt="Partner" class="trust-logo-img">
+                <img src="partner12.png" alt="Partner" class="trust-logo-img">
+                <!-- Duplicated for seamless loop -->
                 <img src="partner1.png" alt="Partner" class="trust-logo-img">
                 <img src="partner2.svg" alt="Partner" class="trust-logo-img">
                 <img src="partner3.png" alt="Partner" class="trust-logo-img">
@@ -2139,7 +2093,7 @@
         </div>
     </section>
 
-    <!-- Offer Section -->
+    <!-- Offer Section (removed Landing Page and Ads) -->
     <section class="offer-section" id="angebot">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -2200,34 +2154,6 @@
                 <div class="offer-card animate-on-scroll">
                     <div class="offer-icon">
                         <span class="icon icon-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                        </span>
-                    </div>
-                    <h4>Landing Page</h4>
-                    <p>Eine konversionsstarke Landingpage, die Interessenten in Anfragen verwandelt.</p>
-                    <ul class="offer-features">
-                        <li><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Professionelles Design</li>
-                        <li><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Conversion-optimiert</li>
-                        <li><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Mobile-freundlich</li>
-                    </ul>
-                </div>
-                <div class="offer-card animate-on-scroll">
-                    <div class="offer-icon">
-                        <span class="icon icon-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-                        </span>
-                    </div>
-                    <h4>KI-Anzeigen</h4>
-                    <p>Zielgerichtete Werbeanzeigen, die Ihre Botschaft zur richtigen Zielgruppe bringen.</p>
-                    <ul class="offer-features">
-                        <li><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> LinkedIn & Meta Ads</li>
-                        <li><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> KI-optimierte Texte</li>
-                        <li><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Retargeting-Kampagnen</li>
-                    </ul>
-                </div>
-                <div class="offer-card animate-on-scroll">
-                    <div class="offer-icon">
-                        <span class="icon icon-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         </span>
                     </div>
@@ -2243,7 +2169,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Integrated Testimonials Section (only testimonials with matching videos) -->
     <section class="testimonials-section" id="ergebnisse">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -2257,247 +2183,153 @@
                 <p class="section-subtitle">Echte Ergebnisse von echten Geschäftsführern</p>
             </div>
             <div class="testimonials-grid">
+                <!-- Björn Dettmar -->
                 <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-rating">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div class="testimonial-result">4 Mio. € mehr Umsatz in nur 3 Monaten</div>
-                    <p class="testimonial-quote">"Wir konnten über 15 Neukunden gewinnen und unseren Umsatz im sechsstelligen Bereich steigern. Mit einer langfristigen Kundenbindung ergibt sich daraus ein potenzieller Umsatz von 3 bis 4 Millionen Euro."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">BD</div>
-                        <div class="author-info">
-                            <h5>Björn Dettmar</h5>
-                            <span>Geschäftsführer, REDCOM GmbH</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-rating">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div class="testimonial-result">10 Termine → 4 Abschlüsse in einer Woche</div>
-                    <p class="testimonial-quote">"Schon in der ersten Woche hatte ich 10 Termine und konnte direkt vier Abschlüsse erzielen. Die langfristige Perspektive: über zwei Millionen Euro Umsatzpotenzial."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">TS</div>
-                        <div class="author-info">
-                            <h5>Torsten Schimpf</h5>
-                            <span>Geschäftsführer, Schimpf Solutions</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-rating">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div class="testimonial-result">50.000 - 60.000 € Umsatz/Monat über LinkedIn</div>
-                    <p class="testimonial-quote">"Wir generieren durch Philipps Unterstützung jeden Monat zwischen 50.000€ und 60.000 € Umsatz – rein über LinkedIn. Ein solides Fundament für konstante Kundengewinnung."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">TJ</div>
-                        <div class="author-info">
-                            <h5>Tobias Junger</h5>
-                            <span>Geschäftsführer, WDM GmbH</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-rating">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div class="testimonial-result">150.000 € + 50.000 € Aufträge gesichert</div>
-                    <p class="testimonial-quote">"Diese Woche zwei Angebote über 150.000 € und 50.000 € eingetütet. Ich habe aktuell so viele Aufträge, dass ich dringend neue Mitarbeiter einstellen muss."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PR</div>
-                        <div class="author-info">
-                            <h5>Philipp Rothmann</h5>
-                            <span>Geschäftsführer, ITsecuritycoach</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-rating">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div class="testimonial-result">4-5 Termine pro Woche – Gamechanger!</div>
-                    <p class="testimonial-quote">"Ich habe regelmäßig vier, fünf Termine in der Woche. So viele Anfragen und Aufträge, die ich gar nicht abgearbeitet bekomme. Für mich war es ein echter Gamechanger."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">DM</div>
-                        <div class="author-info">
-                            <h5>Daniel Müller</h5>
-                            <span>Geschäftsführer, Liebe Zeitarbeit</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card animate-on-scroll">
-                    <div class="testimonial-rating">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <div class="testimonial-result">6-stellige Aufträge gewonnen</div>
-                    <p class="testimonial-quote">"Wir haben über 4000 Kontakte generiert und einen Auftrag gewonnen, der gleich sechsstellige Umsätze verspricht. Die Zusammenarbeit hat sich mehr als gelohnt."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JS</div>
-                        <div class="author-info">
-                            <h5>Jürgen Schell</h5>
-                            <span>Geschäftsführer, GR Software</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Testimonials Section -->
-    <section class="video-testimonials-section" id="video-ergebnisse">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-label">
-                    <span class="icon icon-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                    </span>
-                    Video-Testimonials
-                </span>
-                <h2 class="section-title">Kunden berichten im Video</h2>
-                <p class="section-subtitle">Sehen Sie selbst, was unsere Partner über die Zusammenarbeit sagen</p>
-            </div>
-            <div class="video-grid">
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
+                    <div class="testimonial-video">
                         <iframe src="https://www.youtube.com/embed/DsmhV2Ljq0A" title="Björn Dettmar - REDCOM GmbH" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Björn Dettmar</h4>
-                        <p class="video-subtitle">Geschäftsführer, REDCOM GmbH</p>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="testimonial-result">4 Mio. € mehr Umsatz in nur 3 Monaten</div>
+                        <p class="testimonial-quote">"Wir konnten über 15 Neukunden gewinnen und unseren Umsatz im sechsstelligen Bereich steigern. Mit einer langfristigen Kundenbindung ergibt sich daraus ein potenzieller Umsatz von 3 bis 4 Millionen Euro."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">BD</div>
+                            <div class="author-info">
+                                <h5>Björn Dettmar</h5>
+                                <span>Geschäftsführer, REDCOM GmbH</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
+
+                <!-- Torsten Schimpf -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-video">
                         <iframe src="https://www.youtube.com/embed/Mya42QGiW1c" title="Torsten Schimpf - Schimpf Solutions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Torsten Schimpf</h4>
-                        <p class="video-subtitle">Geschäftsführer, Schimpf Solutions</p>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="testimonial-result">10 Termine → 4 Abschlüsse in einer Woche</div>
+                        <p class="testimonial-quote">"Schon in der ersten Woche hatte ich 10 Termine und konnte direkt vier Abschlüsse erzielen. Die langfristige Perspektive: über zwei Millionen Euro Umsatzpotenzial."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">TS</div>
+                            <div class="author-info">
+                                <h5>Torsten Schimpf</h5>
+                                <span>Geschäftsführer, Schimpf Solutions</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
+
+                <!-- Tobias Junger -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-video">
                         <iframe src="https://www.youtube.com/embed/TyiVeRKStqI" title="Tobias Junger - WDM GmbH" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Tobias Junger</h4>
-                        <p class="video-subtitle">Geschäftsführer, WDM GmbH</p>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="testimonial-result">50.000 - 60.000 € Umsatz/Monat über LinkedIn</div>
+                        <p class="testimonial-quote">"Wir generieren durch Philipps Unterstützung jeden Monat zwischen 50.000€ und 60.000 € Umsatz – rein über LinkedIn. Ein solides Fundament für konstante Kundengewinnung."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">TJ</div>
+                            <div class="author-info">
+                                <h5>Tobias Junger</h5>
+                                <span>Geschäftsführer, WDM GmbH</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
+
+                <!-- Philipp Rothmann -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-video">
                         <iframe src="https://www.youtube.com/embed/Wgxt59VAh48" title="Philipp Rothmann - ITsecuritycoach" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Philipp Rothmann</h4>
-                        <p class="video-subtitle">Geschäftsführer, ITsecuritycoach</p>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="testimonial-result">150.000 € + 50.000 € Aufträge gesichert</div>
+                        <p class="testimonial-quote">"Diese Woche zwei Angebote über 150.000 € und 50.000 € eingetütet. Ich habe aktuell so viele Aufträge, dass ich dringend neue Mitarbeiter einstellen muss."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">PR</div>
+                            <div class="author-info">
+                                <h5>Philipp Rothmann</h5>
+                                <span>Geschäftsführer, ITsecuritycoach</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
+
+                <!-- Daniel Müller -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-video">
                         <iframe src="https://www.youtube.com/embed/0_Q5aX-G-h4" title="Daniel Müller - Liebe Zeitarbeit" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Daniel Müller</h4>
-                        <p class="video-subtitle">Geschäftsführer, Liebe Zeitarbeit</p>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="testimonial-result">4-5 Termine pro Woche – Gamechanger!</div>
+                        <p class="testimonial-quote">"Ich habe regelmäßig vier, fünf Termine in der Woche. So viele Anfragen und Aufträge, die ich gar nicht abgearbeitet bekomme. Für mich war es ein echter Gamechanger."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">DM</div>
+                            <div class="author-info">
+                                <h5>Daniel Müller</h5>
+                                <span>Geschäftsführer, Liebe Zeitarbeit</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
+
+                <!-- Jürgen Schell -->
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-video">
                         <iframe src="https://www.youtube.com/embed/aBzl8iGimzI" title="Jürgen Schell - GR Software" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                     </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Jürgen Schell</h4>
-                        <p class="video-subtitle">Geschäftsführer, GR Software</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/C9JDjKUGPQk" title="Kundenergebnis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Weiterer Erfolg</h4>
-                        <p class="video-subtitle">Kundenergebnis</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/oGZDRIcy0-M" title="Kundenergebnis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Weiterer Erfolg</h4>
-                        <p class="video-subtitle">Kundenergebnis</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/3OSbzxJt4YE" title="Kundenergebnis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Weiterer Erfolg</h4>
-                        <p class="video-subtitle">Kundenergebnis</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/8iSeFUTMyPQ" title="Kundenergebnis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Weiterer Erfolg</h4>
-                        <p class="video-subtitle">Kundenergebnis</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/hdx4qLjmPKM" title="Kundenergebnis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Weiterer Erfolg</h4>
-                        <p class="video-subtitle">Kundenergebnis</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/O8oFhlLS7pU" title="Kundenergebnis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Weiterer Erfolg</h4>
-                        <p class="video-subtitle">Kundenergebnis</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/wI0WZp8-kLY" title="Kundenergebnis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Weiterer Erfolg</h4>
-                        <p class="video-subtitle">Kundenergebnis</p>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="testimonial-result">6-stellige Aufträge gewonnen</div>
+                        <p class="testimonial-quote">"Wir haben über 4000 Kontakte generiert und einen Auftrag gewonnen, der gleich sechsstellige Umsätze verspricht. Die Zusammenarbeit hat sich mehr als gelohnt."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JS</div>
+                            <div class="author-info">
+                                <h5>Jürgen Schell</h5>
+                                <span>Geschäftsführer, GR Software</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
