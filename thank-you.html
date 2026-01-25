@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termin bestätigt | B2B Accelerator</title>
+    <meta name="description" content="Vielen Dank für Ihre Buchung. Wir freuen uns auf das Gespräch mit Ihnen.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-white: #ffffff;
+            --bg-light: #f8fafc;
+            --bg-subtle: #f1f5f9;
+            --card-white: #ffffff;
+            --accent-blue: #2563eb;
+            --accent-blue-dark: #1d4ed8;
+            --accent-blue-light: #3b82f6;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --text-dark: #0f172a;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-subtle: #94a3b8;
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --success-green: #059669;
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                height: 80px;
+            }
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 38px;
+            }
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .main .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .main {
+                padding: 60px 0;
+            }
+        }
+
+        .thank-you-card {
+            background: var(--primary-white);
+            border-radius: 24px;
+            box-shadow: var(--shadow-xl);
+            padding: 32px 24px;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @media (min-width: 768px) {
+            .thank-you-card {
+                padding: 48px 56px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success-bg);
+            border: 2px solid var(--success-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: scaleIn 0.4s ease-out 0.2s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--success-green);
+        }
+
+        .thank-you-card h1 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .thank-you-card h1 {
+                font-size: 32px;
+            }
+        }
+
+        .thank-you-card .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .thank-you-card .subtitle {
+                font-size: 18px;
+            }
+        }
+
+        /* Meeting Details */
+        .meeting-details {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .meeting-details-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .meeting-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .meeting-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .meeting-item:first-of-type {
+            padding-top: 0;
+        }
+
+        .meeting-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .meeting-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-blue);
+        }
+
+        .meeting-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .meeting-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .meeting-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .meeting-value {
+                font-size: 16px;
+            }
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--accent-gradient);
+            color: var(--primary-white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary-white);
+            color: var(--text-dark);
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-light);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .btn-secondary svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* What's Next Section */
+        .whats-next {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .whats-next h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .whats-next h3 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-blue);
+        }
+
+        .next-steps {
+            list-style: none;
+        }
+
+        .next-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-gradient);
+            color: var(--primary-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-white);
+            border-top: 1px solid var(--border-color);
+            padding: 24px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-info {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Calendar dropdown */
+        .calendar-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .calendar-options {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: var(--primary-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .calendar-options.show {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .calendar-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s ease;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .calendar-option:last-child {
+            border-bottom: none;
+        }
+
+        .calendar-option:hover {
+            background: var(--bg-light);
+        }
+
+        .calendar-option svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .calendar-option .google-icon { color: #4285f4; }
+        .calendar-option .apple-icon { color: #333; }
+        .calendar-option .outlook-icon { color: #0078d4; }
+        .calendar-option .ics-icon { color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="https://www.b2b-accelerator.com" class="logo">
+                    <img src="logo.png" alt="B2B Accelerator" class="logo-img">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="thank-you-card">
+                <!-- Success Icon -->
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+
+                <!-- Title -->
+                <h1>Termin <span class="gradient-text">bestätigt!</span></h1>
+                <p class="subtitle">Vielen Dank für Ihre Buchung. Eine Bestätigung wurde an Ihre E-Mail-Adresse gesendet.</p>
+
+                <!-- Meeting Details -->
+                <div class="meeting-details">
+                    <div class="meeting-details-title">Ihre Termindetails</div>
+                    
+                    <!-- Host -->
+                    <div class="meeting-item">
+                        <div class="meeting-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="meeting-info">
+                            <div class="meeting-label">Ihr Gesprächspartner</div>
+                            <div class="meeting-value" id="host-name">Max Mustermann</div>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="meeting-item">
+                        <div class="meeting-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                                <line x1="16" x2="16" y1="2" y2="6"/>
+                                <line x1="8" x2="8" y1="2" y2="6"/>
+                                <line x1="3" x2="21" y1="10" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="meeting-info">
+                            <div class="meeting-label">Datum & Uhrzeit</div>
+                            <div class="meeting-value" id="meeting-datetime">Montag, 27. Januar 2025 um 14:00 Uhr</div>
+                        </div>
+                    </div>
+
+                    <!-- Meeting Type -->
+                    <div class="meeting-item">
+                        <div class="meeting-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 10l5 5-5 5"/>
+                                <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
+                            </svg>
+                        </div>
+                        <div class="meeting-info">
+                            <div class="meeting-label">Termin</div>
+                            <div class="meeting-value" id="meeting-type">B2B Accelerator Potenzialanalyse</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add to Calendar Button -->
+                <div class="calendar-dropdown">
+                    <button class="btn-primary" id="calendar-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                            <line x1="16" x2="16" y1="2" y2="6"/>
+                            <line x1="8" x2="8" y1="2" y2="6"/>
+                            <line x1="3" x2="21" y1="10" y2="10"/>
+                            <line x1="12" x2="12" y1="14" y2="18"/>
+                            <line x1="10" x2="14" y1="16" y2="16"/>
+                        </svg>
+                        <span>Zum Kalender hinzufügen</span>
+                    </button>
+                    <div class="calendar-options" id="calendar-options">
+                        <a href="#" class="calendar-option" id="google-cal">
+                            <svg class="google-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.5 4H18V3a1 1 0 0 0-2 0v1H8V3a1 1 0 0 0-2 0v1H4.5A2.5 2.5 0 0 0 2 6.5v13A2.5 2.5 0 0 0 4.5 22h15a2.5 2.5 0 0 0 2.5-2.5v-13A2.5 2.5 0 0 0 19.5 4zM20 19.5a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5V9h16v10.5z"/>
+                            </svg>
+                            Google Kalender
+                        </a>
+                        <a href="#" class="calendar-option" id="apple-cal">
+                            <svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            Apple Kalender
+                        </a>
+                        <a href="#" class="calendar-option" id="outlook-cal">
+                            <svg class="outlook-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.43.34-.76.22-.34.59-.54.36-.2.87-.2t.86.2q.35.21.57.55.22.34.31.77.1.43.1.88zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.5V2.55q0-.44.3-.75.3-.3.75-.3h12.9q.44 0 .75.3.3.3.3.75V12zm-6 8.25h.61l1.25-4.15h-2.1q.34 1.21.67 2.4l.32 1.2.25-.01zm1.67-12.62q0-.24-.07-.46-.07-.23-.21-.41-.14-.18-.34-.29-.2-.11-.46-.11h-6.5v1.75h3.75V7h3.78q.25 0 .46-.11.2-.12.34-.3.14-.18.21-.4.04-.24.04-.49zm-8.29 5.63q0-.88-.21-1.57-.22-.68-.63-1.14-.42-.46-1.02-.7-.61-.24-1.41-.24-.79 0-1.41.24-.61.24-1.03.7-.43.47-.66 1.14-.22.68-.22 1.57t.22 1.59q.23.68.65 1.15t1.02.7q.6.24 1.43.24.79 0 1.4-.24.61-.23 1.03-.7.41-.46.63-1.15.22-.68.22-1.59z"/>
+                            </svg>
+                            Outlook
+                        </a>
+                        <a href="#" class="calendar-option" id="ics-download">
+                            <svg class="ics-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" x2="12" y1="15" y2="3"/>
+                            </svg>
+                            .ics Datei herunterladen
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Back to Website -->
+                <a href="https://www.b2b-accelerator.com" class="btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 19-7-7 7-7"/>
+                        <path d="M19 12H5"/>
+                    </svg>
+                    <span>Zurück zur Website</span>
+                </a>
+
+                <!-- What's Next -->
+                <div class="whats-next">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        So geht es weiter
+                    </h3>
+                    <ul class="next-steps">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span>Sie erhalten in Kürze eine E-Mail-Bestätigung mit allen Details</span>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span>Kurz vor dem Termin senden wir Ihnen den Zoom-Link zu</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span>Im Gespräch analysieren wir gemeinsam Ihr Potenzial für planbare Neukunden</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    B2B Accelerator GmbH · Laufer Straße 13A · 91227 Leinburg
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.b2b-accelerator.com/impressum">Impressum</a>
+                    <a href="https://www.b2b-accelerator.com/datenschutz">Datenschutz</a>
+                    <a href="https://www.b2b-accelerator.com/agb">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Meeting data - can be populated from URL parameters or Calendly redirect
+        const meetingData = {
+            hostName: 'Max Mustermann',
+            dateTime: new Date('2025-01-27T14:00:00'),
+            duration: 30, // minutes
+            title: 'B2B Accelerator Potenzialanalyse',
+            description: 'Kostenloses Erstgespräch zur Potenzialanalyse für planbare Neukunden',
+            location: 'Zoom (Link folgt per E-Mail)'
+        };
+
+        // Parse URL parameters from Calendly redirect
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                inviteeName: params.get('invitee_full_name'),
+                inviteeEmail: params.get('invitee_email'),
+                eventStartTime: params.get('event_start_time'),
+                eventEndTime: params.get('event_end_time'),
+                eventName: params.get('event_type_name'),
+                assignedTo: params.get('assigned_to')
+            };
+        }
+
+        // Format date in German
+        function formatDateGerman(date) {
+            const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+            const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+            
+            const dayName = days[date.getDay()];
+            const day = date.getDate();
+            const month = months[date.getMonth()];
+            const year = date.getFullYear();
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            
+            return `${dayName}, ${day}. ${month} ${year} um ${hours}:${minutes} Uhr`;
+        }
+
+        // Initialize page with URL params or defaults
+        function initPage() {
+            const params = getUrlParams();
+            
+            if (params.assignedTo) {
+                document.getElementById('host-name').textContent = params.assignedTo;
+                meetingData.hostName = params.assignedTo;
+            }
+            
+            if (params.eventStartTime) {
+                const startDate = new Date(params.eventStartTime);
+                document.getElementById('meeting-datetime').textContent = formatDateGerman(startDate);
+                meetingData.dateTime = startDate;
+                
+                if (params.eventEndTime) {
+                    const endDate = new Date(params.eventEndTime);
+                    meetingData.duration = (endDate - startDate) / 60000;
+                }
+            }
+            
+            if (params.eventName) {
+                document.getElementById('meeting-type').textContent = params.eventName;
+                meetingData.title = params.eventName;
+            }
+        }
+
+        // Calendar dropdown toggle
+        const calendarBtn = document.getElementById('calendar-btn');
+        const calendarOptions = document.getElementById('calendar-options');
+
+        calendarBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            calendarOptions.classList.toggle('show');
+        });
+
+        document.addEventListener('click', () => {
+            calendarOptions.classList.remove('show');
+        });
+
+        calendarOptions.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Generate calendar URLs
+        function formatDateForCalendar(date) {
+            return date.toISOString().replace(/-|:|\.\d{3}/g, '');
+        }
+
+        function getEndDate(startDate, durationMinutes) {
+            return new Date(startDate.getTime() + durationMinutes * 60000);
+        }
+
+        // Google Calendar
+        document.getElementById('google-cal').addEventListener('click', (e) => {
+            e.preventDefault();
+            const startDate = meetingData.dateTime;
+            const endDate = getEndDate(startDate, meetingData.duration);
+            
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(meetingData.title)}&dates=${formatDateForCalendar(startDate)}/${formatDateForCalendar(endDate)}&details=${encodeURIComponent(meetingData.description)}&location=${encodeURIComponent(meetingData.location)}`;
+            
+            window.open(url, '_blank');
+        });
+
+        // Outlook Calendar
+        document.getElementById('outlook-cal').addEventListener('click', (e) => {
+            e.preventDefault();
+            const startDate = meetingData.dateTime;
+            const endDate = getEndDate(startDate, meetingData.duration);
+            
+            const url = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(meetingData.title)}&startdt=${startDate.toISOString()}&enddt=${endDate.toISOString()}&body=${encodeURIComponent(meetingData.description)}&location=${encodeURIComponent(meetingData.location)}`;
+            
+            window.open(url, '_blank');
+        });
+
+        // Apple Calendar / ICS Download
+        function generateICS() {
+            const startDate = meetingData.dateTime;
+            const endDate = getEndDate(startDate, meetingData.duration);
+            
+            const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//B2B Accelerator//Meeting//DE
+BEGIN:VEVENT
+DTSTART:${formatDateForCalendar(startDate)}
+DTEND:${formatDateForCalendar(endDate)}
+SUMMARY:${meetingData.title}
+DESCRIPTION:${meetingData.description}
+LOCATION:${meetingData.location}
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+            
+            return icsContent;
+        }
+
+        document.getElementById('apple-cal').addEventListener('click', (e) => {
+            e.preventDefault();
+            downloadICS();
+        });
+
+        document.getElementById('ics-download').addEventListener('click', (e) => {
+            e.preventDefault();
+            downloadICS();
+        });
+
+        function downloadICS() {
+            const icsContent = generateICS();
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'b2b-accelerator-termin.ics';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Initialize
+        initPage();
+    </script>
+</body>
+</html>
