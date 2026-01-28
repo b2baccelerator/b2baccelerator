@@ -195,9 +195,21 @@
             box-shadow: var(--shadow-md);
         }
 
+        /* Desktop Only CTA wrapper */
+        .desktop-cta-wrapper {
+            display: none;
+            margin-top: 32px;
+        }
+        
+        @media (min-width: 768px) {
+            .desktop-cta-wrapper {
+                display: block;
+            }
+        }
+
         /* Header */
         .header {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -214,6 +226,7 @@
         @media (min-width: 768px) {
             .header {
                 height: 100px;
+                position: fixed;
             }
         }
 
@@ -1877,7 +1890,7 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            max-width: 700px;
+            max-width: 1000px; /* Increased to accommodate wider calendar */
             margin: 0 auto;
         }
 
@@ -1905,6 +1918,9 @@
             font-size: 15px;
             margin-bottom: 28px;
             line-height: 1.6;
+            max-width: 700px; /* Constrain text width for readability */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (min-width: 768px) {
@@ -2066,7 +2082,7 @@
                 <a href="#" class="logo">
                     <img src="logo.png" alt="B2B Accelerator" class="logo-img">
                 </a>
-                <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/d/cvfz-2nb-mpd/b2b-accelerator-potenzialanalyse?hide_gdpr_banner=1&primary_color=2563eb'});return false;" class="btn-primary header-cta">
+                <a href="#termin" class="btn-primary header-cta">
                     <span>Kostenlos beraten lassen</span>
                     <span class="icon icon-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -2085,7 +2101,7 @@
                     Durch ein klar aufgebautes System aus Positionierung, Automatisierung und sinnvoll eingesetzter KI, das regelmäßig neue Anfragen erzeugt.
                 </p>
                 <div class="hero-cta">
-                    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/d/cvfz-2nb-mpd/b2b-accelerator-potenzialanalyse?hide_gdpr_banner=1&primary_color=2563eb'});return false;" class="btn-primary">
+                    <a href="#termin" class="btn-primary">
                         <span>Kostenlos beraten lassen</span>
                         <span class="icon icon-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -2293,6 +2309,16 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Desktop Only CTA 1 -->
+            <div class="desktop-cta-wrapper" style="text-align: center; margin-top: 40px;">
+                <a href="#termin" class="btn-primary">
+                    <span>Strategiegespräch vereinbaren</span>
+                    <span class="icon icon-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -2369,6 +2395,17 @@
                     </ul>
                 </div>
             </div>
+            
+            <!-- Desktop Only CTA 2 -->
+            <div class="desktop-cta-wrapper" style="text-align: center; margin-top: 40px;">
+                <a href="#termin" class="btn-primary">
+                    <span>Jetzt Verfügbarkeit prüfen</span>
+                    <span class="icon icon-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -2629,6 +2666,16 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Desktop Only CTA 3 -->
+            <div class="desktop-cta-wrapper" style="text-align: center; margin-top: 40px;">
+                <a href="#termin" class="btn-primary">
+                    <span>Starten Sie Ihren Prozess</span>
+                    <span class="icon icon-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -2705,7 +2752,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section" id="termin">
         <div class="container">
             <div class="cta-content animate-on-scroll">
                 <h2>Bereit für planbare <span class="gradient-text">Neukunden?</span></h2>
@@ -2715,12 +2762,9 @@
                     <span class="cta-benefit"><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Unverbindlich</span>
                     <span class="cta-benefit"><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 15 Minuten</span>
                 </div>
-                <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/d/cvfz-2nb-mpd/b2b-accelerator-potenzialanalyse?hide_gdpr_banner=1&primary_color=2563eb'});return false;" class="btn-primary">
-                    <span>Jetzt Termin sichern</span>
-                    <span class="icon icon-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
-                </a>
+                <!-- Calendly inline widget begin -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/d/cvfz-2nb-mpd/b2b-accelerator-potenzialanalyse?hide_gdpr_banner=1&primary_color=2563eb" style="min-width:320px;height:950px;"></div>
+                <!-- Calendly inline widget end -->
             </div>
         </div>
     </section>
@@ -2747,7 +2791,7 @@
 
     <!-- Sticky Mobile CTA -->
     <div class="sticky-cta">
-        <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/d/cvfz-2nb-mpd/b2b-accelerator-potenzialanalyse?hide_gdpr_banner=1&primary_color=2563eb'});return false;" class="btn-primary">
+        <a href="#termin" class="btn-primary">
             <span>Kostenlosen Termin sichern</span>
             <span class="icon icon-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -2828,16 +2872,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
