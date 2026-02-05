@@ -23,9 +23,12 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '9172872079411966');
     fbq('track', 'PageView');
+    fbq('track', 'Lead');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=9172872079411966&ev=PageView&noscript=1"/></noscript>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=9172872079411966&ev=Lead&noscript=1"/></noscript>
     <!-- End Meta Pixel Code -->
     
     <!-- Plausible Analytics -->
@@ -876,14 +879,7 @@ END:VCALENDAR`;
         // Initialize
         initPage();
 
-        // Fire Meta Pixel Lead event after page load
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead');
-                }
-            }, 500);
-        });
+    
     </script>
 </body>
 </html>
