@@ -876,6 +876,15 @@ END:VCALENDAR`;
 
         // Initialize
         initPage();
+
+        // Fire Meta Pixel Lead event after page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead');
+                }
+            }, 500);
+        });
     </script>
 </body>
 </html>
