@@ -23,7 +23,10 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '9172872079411966');
     fbq('track', 'PageView');
-    fbq('track', 'Lead');
+    var params = new URLSearchParams(window.location.search);
+    var eventStartTime = params.get('event_start_time') || Date.now().toString();
+    var eventID = 'lead_' + eventStartTime.replace(/[^a-zA-Z0-9]/g, '');
+    fbq('track', 'Lead', {}, {eventID: eventID});
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=9172872079411966&ev=PageView&noscript=1"/></noscript>
