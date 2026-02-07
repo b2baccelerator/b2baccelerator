@@ -2770,6 +2770,19 @@
                     <span class="cta-benefit"><span class="icon icon-sm check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 15 Minuten</span>
                 </div>
                 <!-- Calendly inline widget begin -->
+                <script>
+  const params = new URLSearchParams(window.location.search);
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  const widget = document.querySelector('.calendly-inline-widget');
+  const baseUrl = new URL(widget.dataset.url);
+
+  utmKeys.forEach(key => {
+    const val = params.get(key);
+    if (val) baseUrl.searchParams.set(key, val);
+  });
+
+  widget.dataset.url = baseUrl.toString();
+</script>
                 <div class="calendly-inline-widget" data-url="https://calendly.com/d/cvfz-2nb-mpd/b2b-accelerator-potenzialanalyse?hide_gdpr_banner=1&primary_color=2563eb" style="min-width:320px;height:950px;"></div>
                 <!-- Calendly inline widget end -->
             </div>
@@ -2894,6 +2907,7 @@
     </script>
 </body>
 </html>
+
 
 
 
